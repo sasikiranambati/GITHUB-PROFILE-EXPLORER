@@ -1,0 +1,431 @@
+.history-tag-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #21262d;
+  color: #22c55e;
+  padding: 8px 12px 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.history-tag-user {
+  margin-right: 2px;
+}
+.history-tag-clear {
+  background: transparent;
+  border: none;
+  color: #ff5555;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+.history-tag-clear:hover {
+  background: #ff5555;
+  color: #fff;
+}
+/* Not Found Card */
+.not-found-card {
+  margin: 60px auto 0 auto;
+  max-width: 480px;
+  background: #161b22;
+  border-radius: 18px;
+  padding: 40px 32px 32px 32px;
+  box-shadow: 0 2px 18px rgba(34, 197, 94, 0.10);
+  text-align: center;
+  border: 1px solid #30363d;
+}
+.not-found-card h2 {
+  color: #ff5555;
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.not-found-card p {
+  color: #c9d1d9;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+/* Search History Styles */
+.search-history {
+  margin: 40px auto 0 auto;
+  max-width: 500px;
+  background: #161b22;
+  border-radius: 18px;
+  padding: 24px 18px 18px 18px;
+  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.08);
+  text-align: center;
+}
+.search-history h3 {
+  color: #c9d1d9;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.history-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.history-tag {
+  background: #21262d;
+  color: #22c55e;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.history-tag:hover {
+  background: #22c55e;
+  color: #161b22;
+  transform: translateY(-2px) scale(1.06);
+}
+/* Profile Page Buttons */
+.profile-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.profile-btn {
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 28px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #238636 60%, #161b22 100%);
+  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.18);
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+.profile-btn.github-btn {
+  background: linear-gradient(90deg, #161b22 10%, #238636 90%);
+}
+.profile-btn.repos-btn {
+  background: linear-gradient(90deg, #238636 60%, #161b22 100%);
+}
+.profile-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 18px rgba(34, 197, 94, 0.25);
+  color: #c9d1d9;
+}
+/* Navbar Styles */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px 18px 32px;
+  background: #161b22;
+  border-bottom: 1px solid #22262e;
+  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.04);
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.github-logo {
+  width: 36px;
+  height: 36px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.nav-title span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #fff 60%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-btn.home-btn {
+  padding: 8px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 24px;
+  background: linear-gradient(90deg, #22c55e 60%, #16a34a 100%);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(34, 197, 94, 0.18);
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-btn.home-btn:hover {
+  background: linear-gradient(90deg, #16a34a 60%, #22c55e 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 18px rgba(34, 197, 94, 0.25);
+}
+
+.nav-link {
+  color: #c9d1d9;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 18px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-link:hover {
+  background: #21262d;
+  color: #22c55e;
+}
+/* Home Page */
+.home-page {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.highlighted-title {
+  font-size: 72px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #c9d1d9 10%, #238636 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -2.5px;
+  white-space: normal;
+  overflow: visible;
+  word-break: break-word;
+  text-shadow: 0 4px 32px rgba(34,197,94,0.18), 0 1px 0 #222;
+}
+
+.hero-section p {
+  color: #8b949e;
+  font-size: 22px;
+  max-width: 600px;
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+.hero-section .start-btn {
+  padding: 18px 48px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-section .start-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(34, 197, 94, 0.5);
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 40px;
+  background: #0d1117;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: linear-gradient(145deg, #161b22 0%, #21262d 100%);
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: 280px;
+  text-align: center;
+  border: 1px solid #30363d;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: #22c55e;
+  box-shadow: 0 10px 40px rgba(34, 197, 94, 0.15);
+}
+
+.feature-card h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.feature-card p {
+  color: #8b949e;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px 40px;
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 20px 40px;
+}
+
+.stat-box h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #22c55e;
+  margin-bottom: 8px;
+}
+
+.stat-box p {
+  color: #8b949e;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Search Page */
+.search-page {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.search-page h1 {
+  font-size: 56px;
+  margin-bottom: 15px;
+}
+
+.search-page p {
+  color: #cbd5e1;
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #161b22;
+  border: 2px solid #22c55e;
+  border-radius: 16px;
+  padding: 10px;
+  width: 700px;
+  max-width: 95%;
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
+}
+
+.search-icon {
+  font-size: 24px;
+  margin: 0 12px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 14px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+}
+
+.search-box button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  transform: translateY(-3px);
+}
+
+.recent-box {
+  margin-top: 40px;
+}
+
+.recent-box h3 {
+  margin-bottom: 15px;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tags span {
+  background: #161b22;
+  padding: 10px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tags span:hover {
+  background: #22c55e;
+}
