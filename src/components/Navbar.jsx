@@ -6,13 +6,14 @@ export default function Navbar() {
     <nav className='nav'>
       <div className='nav-title'>
         <img src={githubLogo} alt="GitHub Logo" className="github-logo" />
-        <span>GitHub Explorer</span>
+        <span>GitHub <span className='nav-highlight'>Explorer</span></span>
       </div>
       <div className='nav-links'>
         <Link to='/'>
           <button className='nav-btn home-btn'>Home</button>
         </Link>
         <Link to='/search' className='nav-link'>Search</Link>
+        <Link to='/favorites' className='nav-link'>Favorites</Link>
       </div>
     </nav>
   );
