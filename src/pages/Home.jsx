@@ -2,10 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import githubLogo from "../assets/github-mark.svg";
 
+const words = ["instantly", "effortlessly", "seamlessly", "in real-time"];
+
 function Home() {
   const brandRef = useRef(null);
   const [contentVisible, setContentVisible] = useState(false);
   const [brandStyle, setBrandStyle] = useState({ opacity: 0 });
+  const [wordIndex, setWordIndex] = useState(0);
+  const [fadeWord, setFadeWord] = useState(true);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -56,6 +60,21 @@ function Home() {
     return () => clearTimeout(timeout);
   }, []);
 
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const interval = setInterval(() => {
+      setFadeWord(false);
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % words.length);
+        setFadeWord(true);
+      }, 300);
+    }, 3200);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="page home-page">
       <div className="glow-container">
@@ -71,7 +90,12 @@ function Home() {
           </div>
 
           <h1 className={`animate-fade-up ${contentVisible ? "visible" : ""}`} style={{ transitionDelay: "0.15s" }}>
-            Discover top developers and repositories <span className="cursor-container"><span className="highlight-text">instantly</span></span>
+            Discover top developers and repositories{" "}
+            <span className="cursor-container">
+              <span className={`highlight-text rotator-word ${fadeWord ? "fade-in" : "fade-out"}`}>
+                {words[wordIndex]}
+              </span>
+            </span>
           </h1>
           <p className={`hero-text animate-fade-up ${contentVisible ? "visible" : ""}`} style={{ transitionDelay: "0.3s" }}>
             Search GitHub usernames, inspect public profiles, and explore repository insights with a polished and professional experience.
