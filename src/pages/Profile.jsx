@@ -37,7 +37,7 @@ function toggleFavorite(username, setIsFavorite) {
 export default function Profile() {
         const { username } = useParams();
         const [user, setUser] = useState(null);
-        const [notFound, setNotFound] = useState(false);
+        const [error, setError] = useState(null);
         const [history, setHistory] = useState([]);
         const [isFavorite, setIsFavorite] = useState(false);
         const navigate = useNavigate();
@@ -52,10 +52,25 @@ export default function Profile() {
         useEffect(() => {
             if (!username) return;
             setUser(null);
-            setNotFound(false);
+            setError(null);
             githubApi.get(`/users/${username}`)
-                .then(r => { setUser(r.data); setNotFound(false); })
-                .catch(() => { setUser(null); setNotFound(true); });
+                .then(r => { setUser(r.data); setError(null); })
+                .catch(err => {
+                    setUser(null);
+                    if (err.response) {
+                        if (err.response.status === 404) {
+                            setError('not_found');
+                        } else if (err.response.status === 403 && (err.response.data?.message?.includes('rate limit') || err.response.data?.message?.includes('limit exceeded'))) {
+                            setError('rate_limit');
+                        } else {
+                            setError(err.response.data?.message || `API Error: ${err.response.status}`);
+                        }
+                    } else if (err.request) {
+                        setError('network_error');
+                    } else {
+                        setError(err.message || 'An unexpected error occurred');
+                    }
+                });
         }, [username]);
 
         // Manage search history in localStorage
@@ -69,12 +84,41 @@ export default function Profile() {
             setHistory(prev);
         }, [username]);
 
-        if (notFound) {
+        if (error) {
+            let errorTitle = 'Error';
+            let errorMessage = 'An error occurred while fetching the developer profile.';
+            let showDotEnvTip = false;
+
+            if (error === 'not_found') {
+                errorTitle = 'User Not Found';
+                errorMessage = `The GitHub user "${username}" does not exist. Please check the username and try again.`;
+            } else if (error === 'rate_limit') {
+                errorTitle = 'API Rate Limit Exceeded';
+                errorMessage = 'GitHub API rate limit exceeded. To resolve this, you can configure a GitHub Personal Access Token in a .env file.';
+                showDotEnvTip = true;
+            } else if (error === 'network_error') {
+                errorTitle = 'Network / Server Error';
+                errorMessage = 'Could not connect to the backend server. Please verify that the backend server is running (try running "npm run dev:full" instead of "npm run dev").';
+            } else {
+                errorTitle = 'GitHub API Error';
+                errorMessage = error;
+            }
+
             return (
                 <div className='page'>
-                    <div className='not-found-card'>
-                        <h2>User Not Found</h2>
-                        <p>The GitHub user "{username}" does not exist. Please check the username and try again.</p>
+                    <div className='not-found-card card' style={{ padding: '32px', maxWidth: '560px', margin: '0 auto 24px' }}>
+                        <h2>{errorTitle}</h2>
+                        <p>{errorMessage}</p>
+                        {showDotEnvTip && (
+                            <div className='dotenv-tip' style={{ marginTop: '20px', padding: '16px', background: 'rgba(255, 255, 255, 0.04)', borderRadius: '14px', textAlign: 'left', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                                <p style={{ margin: '0 0 8px 0', fontWeight: 'bold', color: 'var(--primary)' }}>💡 How to fix this:</p>
+                                <ol style={{ margin: 0, paddingLeft: '20px', fontSize: '0.9rem', color: 'var(--muted)', lineHeight: '1.5' }}>
+                                    <li>Create or open the `.env` file in the project root folder.</li>
+                                    <li>Add your GitHub Personal Access Token: `VITE_GITHUB_TOKEN=your_token_here`</li>
+                                    <li>Restart the development server.</li>
+                                </ol>
+                            </div>
+                        )}
                     </div>
                     {history.length > 1 && (
                         <div className='search-history'>
@@ -116,7 +160,7 @@ export default function Profile() {
 
         return (
             <div className='page'>
-                <div className='card profile'>
+                <div className='card profile-card'>
                     <img src={user.avatar_url} alt={`${user.login} avatar`} />
                     <h2>{user.name || user.login}</h2>
                     <p>{user.bio}</p>

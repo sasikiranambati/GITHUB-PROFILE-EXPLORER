@@ -49,10 +49,22 @@ img {
   display: block;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .page {
   width: min(1240px, calc(100% - 48px));
   margin: 0 auto;
   padding: 32px 0 72px;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .card {
@@ -60,6 +72,16 @@ img {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(34, 197, 94, 0.22);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.32), 0 0 40px rgba(34, 197, 94, 0.05);
 }
 
 .primary-btn,
@@ -71,7 +93,10 @@ img {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .primary-btn {
@@ -82,8 +107,12 @@ img {
 }
 
 .primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 28px 70px rgba(34, 197, 94, 0.22);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 28px 70px rgba(34, 197, 94, 0.3);
+}
+
+.primary-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .primary-btn:focus-visible {
@@ -98,8 +127,14 @@ img {
 }
 
 .secondary-btn:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.secondary-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .secondary-btn:focus-visible {
@@ -142,7 +177,7 @@ img {
 .stats-section p,
 .section p,
 .search-page p,
-.profile p {
+.profile-card p {
   color: var(--muted);
 }
 
@@ -220,9 +255,10 @@ img {
 }
 
 .nav-link:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.16);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-2px);
+  color: #fff;
 }
 
 .nav-btn.home-btn {
@@ -386,13 +422,17 @@ img {
   font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tag-pill:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px) scale(1.03);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .profile-page {
@@ -413,6 +453,12 @@ img {
   border-radius: 24px;
   object-fit: cover;
   margin: 0 auto;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-card:hover img {
+  transform: scale(1.06) rotate(2deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .profile-card h2 {
@@ -453,7 +499,10 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.03em;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .profile-btn.github-btn {
@@ -484,20 +533,25 @@ img {
 
 .profile-btn:hover,
 .profile-btn:focus-visible {
-  transform: translateY(-1px);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.profile-btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .profile-btn.github-btn:hover {
-  box-shadow: 0 24px 50px rgba(34, 197, 94, 0.2);
+  box-shadow: 0 24px 50px rgba(34, 197, 94, 0.3);
 }
 
 .profile-btn.repos-btn:hover,
 .profile-btn.favorite-btn:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .profile-btn.favorite-btn.favorite-active:hover {
-  box-shadow: 0 24px 50px rgba(234, 179, 8, 0.22);
+  box-shadow: 0 24px 50px rgba(234, 179, 8, 0.35);
 }
 
 .repo-grid {
@@ -552,14 +606,18 @@ img {
   padding: 10px 16px;
   color: var(--text);
   font-weight: 600;
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .history-tag:hover,
 .history-tag-action:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px) scale(1.02);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .history-tag-user {
