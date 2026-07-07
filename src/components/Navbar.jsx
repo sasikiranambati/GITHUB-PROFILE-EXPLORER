@@ -4,10 +4,10 @@ import githubLogo from '../assets/github-mark.svg';
 export default function Navbar() {
   return (
     <nav className='nav'>
-      <div className='nav-title'>
+      <Link to='/' className='nav-title'>
         <img src={githubLogo} alt="GitHub Logo" className="github-logo" />
         <span>GitHub <span className='nav-highlight'>Explorer</span></span>
-      </div>
+      </Link>
       <div className='nav-links'>
         <Link to='/'>
           <button className='nav-btn home-btn'>Home</button>
