@@ -71,7 +71,7 @@ function Home() {
           </div>
 
           <h1 className={`animate-fade-up ${contentVisible ? "visible" : ""}`} style={{ transitionDelay: "0.15s" }}>
-            Discover top developers and repositories instantly.
+            Discover top developers and repositories <span className="cursor-container"><span className="highlight-text">instantly</span></span>
           </h1>
           <p className={`hero-text animate-fade-up ${contentVisible ? "visible" : ""}`} style={{ transitionDelay: "0.3s" }}>
             Search GitHub usernames, inspect public profiles, and explore repository insights with a polished and professional experience.

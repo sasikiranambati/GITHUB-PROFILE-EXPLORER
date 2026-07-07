@@ -872,3 +872,42 @@ img {
     animation: none !important;
   }
 }
+
+/* Gradient Text Highlight & Flashing Block Cursor */
+.highlight-text {
+  background: linear-gradient(to right, #a855f7 0%, #6366f1 40%, #5eead4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.cursor-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.cursor-container::after {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 0.95em;
+  background-color: rgba(168, 85, 247, 0.45);
+  margin-left: 8px;
+  vertical-align: middle;
+  animation: blinkCursor 1.2s step-end infinite;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+  border-radius: 2px;
+}
+
+@keyframes blinkCursor {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-container::after {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
